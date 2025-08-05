@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('radiology_images', function (Blueprint $table) {
+        Schema::create('surgery_logs', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('radiology_images');
+        Schema::dropIfExists('surgery_logs');
     }
 };

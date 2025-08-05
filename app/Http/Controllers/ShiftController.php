@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Surgery;
+use App\Models\Shift;
 use Illuminate\Http\Request;
 
-class SurgeryController extends Controller
+class ShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SurgeryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Surgery  $surgery
+     * @param  \App\Models\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function show(Surgery $surgery)
+    public function show(Shift $shift)
     {
         //
     }
@@ -52,10 +52,10 @@ class SurgeryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Surgery  $surgery
+     * @param  \App\Models\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function edit(Surgery $surgery)
+    public function edit(Shift $shift)
     {
         //
     }
@@ -64,10 +64,10 @@ class SurgeryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Surgery  $surgery
+     * @param  \App\Models\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Surgery $surgery)
+    public function update(Request $request, Shift $shift)
     {
         //
     }
@@ -75,10 +75,10 @@ class SurgeryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Surgery  $surgery
+     * @param  \App\Models\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Surgery $surgery)
+    public function destroy(Shift $shift)
     {
         //
     }
