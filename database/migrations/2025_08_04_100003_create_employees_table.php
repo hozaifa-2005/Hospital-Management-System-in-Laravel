@@ -24,10 +24,8 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone_number')->unique();
             $table->string('job_title');
-            $table->unsignedBigInteger('shift_id');
+            $table->foreignId('shift_id')->constrained('shifts')->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign('shift_id')->references('id')->on('shifts')->onDelete('cascade');
         });
     }
 

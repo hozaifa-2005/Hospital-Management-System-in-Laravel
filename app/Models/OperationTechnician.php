@@ -12,4 +12,8 @@ class OperationTechnician extends Model
         'employee_id',
         'operation_experience',
     ];
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

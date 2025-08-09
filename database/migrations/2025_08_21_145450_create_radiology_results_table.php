@@ -15,15 +15,12 @@ return new class extends Migration
     {
         Schema::create('radiology_results', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('request_id');
+            $table->foreignId('request_id')->constrained('radiology_requests')->onDelete('cascade');
             $table->string('image_path');
             $table->text('report')->nullable();
-            $table->unsignedBigInteger('technician_id');
+            $table->foreignId('technician_id')->constrained('radiology_technicians')->onDelete('cascade');
             $table->timestamp('uploaded_at')->useCurrent();
             $table->timestamps();
-
-            $table->foreign('request_id')->references('id')->on('radiology_requests')->onDelete('cascade');
-            $table->foreign('technician_id')->references('id')->on('radiology_technicians')->onDelete('cascade');
         });
     }
 

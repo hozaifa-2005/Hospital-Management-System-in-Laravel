@@ -13,4 +13,8 @@ class PatientUser extends Model
         'username',
         'password',
     ];
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

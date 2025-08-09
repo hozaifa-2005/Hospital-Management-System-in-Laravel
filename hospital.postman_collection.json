@@ -15,7 +15,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/patient/store/?first_name=ssss&last_name=sssss&father_name=sssd&mother_name=asdasd&gender=ذكر&birth_date=1988-03-21&address=sdsd&phone_number=093300000&national_id_number=093300000",
+							"raw": "http://127.0.0.1:8000/api/patient/store/?first_name=ssssz&last_name=sssssz&father_name=sssdd&mother_name=asdasd&gender=ذكر&birth_date=1988-03-21&address=sdsd&phone_number=093300024&national_id_number=093300015",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -33,15 +33,15 @@
 							"query": [
 								{
 									"key": "first_name",
-									"value": "ssss"
+									"value": "ssssz"
 								},
 								{
 									"key": "last_name",
-									"value": "sssss"
+									"value": "sssssz"
 								},
 								{
 									"key": "father_name",
-									"value": "sssd"
+									"value": "sssdd"
 								},
 								{
 									"key": "mother_name",
@@ -61,11 +61,11 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "093300000"
+									"value": "093300024"
 								},
 								{
 									"key": "national_id_number",
-									"value": "093300000"
+									"value": "093300015"
 								}
 							]
 						}
@@ -995,7 +995,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/visit/store?patient_id=3&doctor_id=2&diagnosis=أنت معك كذا كذا كذا&notes=ملاحظات هامة1",
+							"raw": "http://127.0.0.1:8000/api/visit/store?patient_id=2&doctor_id=2&diagnosis=أنت معك كذا كذا كذا&notes=ملاحظات هامة1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1012,7 +1012,7 @@
 							"query": [
 								{
 									"key": "patient_id",
-									"value": "3"
+									"value": "2"
 								},
 								{
 									"key": "doctor_id",
@@ -1591,7 +1591,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/patient-user/store?patient_id=2&username=sameas&password=123123123",
+							"raw": "http://127.0.0.1:8000/api/patient-user/store?patient_id=15&username=fsdfdg&password=123123123",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1608,15 +1608,20 @@
 							"query": [
 								{
 									"key": "patient_id",
-									"value": "2"
+									"value": "15"
 								},
 								{
 									"key": "username",
-									"value": "sameas"
+									"value": "fsdfdg"
 								},
 								{
 									"key": "password",
 									"value": "123123123"
+								},
+								{
+									"key": "id",
+									"value": "11",
+									"disabled": true
 								}
 							]
 						}
@@ -1652,7 +1657,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/patient-user/delete/3",
+							"raw": "http://127.0.0.1:8000/api/patient-user/delete/11",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1665,7 +1670,7 @@
 								"api",
 								"patient-user",
 								"delete",
-								"3"
+								"11"
 							]
 						}
 					},

@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('surgery_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('surgery_id');
+            $table->foreignId('surgery_id')->constrained('surgeries')->onDelete('cascade');
+
             $table->string('item_used');
             $table->integer('quantity');
             $table->text('remarks')->nullable();
             $table->timestamps();
-
-            $table->foreign('surgery_id')->references('id')->on('surgeries')->onDelete('cascade');
         });
     }
 

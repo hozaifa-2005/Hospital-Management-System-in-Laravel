@@ -12,4 +12,8 @@ class RadiologyTechnician extends Model
         'employee_id',
         'device_specialization',
     ];
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

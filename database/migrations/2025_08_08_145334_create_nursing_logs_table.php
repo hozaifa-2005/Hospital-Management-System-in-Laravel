@@ -15,13 +15,11 @@ return new class extends Migration
     {
         Schema::create('nursing_logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id');
-            $table->unsignedBigInteger('nurse_id');
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade');
+            $table->foreignId('nurse_id')->constrained('nurses')->onDelete('cascade');
             $table->timestamp('datetime');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreign('nurse_id')->references('id')->on('nurses')->onDelete('cascade');
         });
     }
 

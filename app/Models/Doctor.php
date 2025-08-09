@@ -43,4 +43,8 @@ class Doctor extends Model
     {
         return $this->hasMany(Surgery::class);
     }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

@@ -22,4 +22,5 @@ class Nurse extends Model
     {
         return $this->hasMany(NursingLog::class);
     }
+    
 }

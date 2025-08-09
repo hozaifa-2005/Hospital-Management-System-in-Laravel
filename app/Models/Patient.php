@@ -49,4 +49,8 @@ class Patient extends Model
     {
         return $this->hasMany(NursingLog::class);
     }
+    public function user()
+    {
+        return $this->hasOne(PatientUser::class);
+    }
 }

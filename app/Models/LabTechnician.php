@@ -12,4 +12,8 @@ class LabTechnician extends Model
         'employee_id',
         'lab_section',
     ];
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

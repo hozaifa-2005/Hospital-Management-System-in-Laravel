@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('radiology_technicians', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+
             $table->string('device_specialization')->nullable();
             $table->timestamps();
-
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

@@ -30,4 +30,33 @@ class Employee extends Model
     {
         return $this->hasOne(EmployeeUser::class);
     }
+    public function nurse()
+    {
+        return $this->hasOne(Nurse::class);
+    }
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
+    public function receptionist()
+    {
+        return $this->hasOne(Receptionist::class);
+    }
+
+    public function operationTechnician()
+    {
+        return $this->hasOne(OperationTechnician::class);
+    }
+
+    public function radiologyTechnician()
+    {
+        return $this->hasOne(RadiologyTechnician::class);
+    }
+
+    public function labTechnician()
+    {
+        return $this->hasOne(LabTechnician::class);
+    }
 }

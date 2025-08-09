@@ -15,14 +15,12 @@ return new class extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('visit_id');
+            $table->foreignId('visit_id')->constrained('visits')->onDelete('cascade');
             $table->string('medicine_name');
             $table->string('dosage');
             $table->string('duration')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
-
-            $table->foreign('visit_id')->references('id')->on('visits')->onDelete('cascade');
         });
     }
 

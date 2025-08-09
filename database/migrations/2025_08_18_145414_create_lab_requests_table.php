@@ -15,15 +15,11 @@ return new class extends Migration
     {
         Schema::create('lab_requests', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('patient_id');
-            $table->unsignedBigInteger('doctor_id');
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->string('test_type');
             $table->timestamp('requested_at')->useCurrent();
             $table->timestamps();
-
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
         });
     }
 

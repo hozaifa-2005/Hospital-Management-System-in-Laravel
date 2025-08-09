@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('patient_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id')->nullable();
+            $table->foreignId('patient_id')->unique()->constrained('patients')->onDelete('cascade');
             $table->string('username')->unique();
             $table->string('password');
             $table->timestamps();
 
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('set null');
         });
     }
 

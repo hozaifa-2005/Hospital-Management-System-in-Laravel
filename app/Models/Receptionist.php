@@ -12,4 +12,9 @@ class Receptionist extends Model
         'employee_id',
         'desk_number',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }
