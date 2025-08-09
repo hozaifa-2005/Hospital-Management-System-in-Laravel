@@ -7,79 +7,54 @@ use Illuminate\Http\Request;
 
 class PatientUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+        public function index()
     {
-        //
+        return response()->json(PatientUser::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'patient_id' => 'nullable|exists:patients,id',
+            'username' => 'required|unique:patient_users,username',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+
+        $user = PatientUser::create($validated);
+        return response()->json($user, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PatientUser  $patientUser
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PatientUser $patientUser)
+    public function show($id)
     {
-        //
+        $user = PatientUser::findOrFail($id);
+        return response()->json($user, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PatientUser  $patientUser
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PatientUser $patientUser)
+    public function update(Request $request, $id)
     {
-        //
+        $user = PatientUser::findOrFail($id);
+
+        $validated = $request->validate([
+            'patient_id' => 'nullable|exists:patients,id',
+            'username' => 'sometimes|required|unique:patient_users,username,' . $id,
+            'password' => 'sometimes|required|string|min:6',
+        ]);
+
+        if (isset($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
+        return response()->json($user, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PatientUser  $patientUser
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PatientUser $patientUser)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PatientUser  $patientUser
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PatientUser $patientUser)
-    {
-        //
+        PatientUser::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

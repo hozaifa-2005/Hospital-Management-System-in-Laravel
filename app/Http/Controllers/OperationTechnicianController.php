@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class OperationTechnicianController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+       public function index()
     {
-        //
+        return response()->json(OperationTechnician::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'operation_experience' => 'nullable|string',
+        ]);
+
+        $opTech = OperationTechnician::create($validated);
+        return response()->json($opTech, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\OperationTechnician  $operationTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function show(OperationTechnician $operationTechnician)
+    public function show($id)
     {
-        //
+        $opTech = OperationTechnician::findOrFail($id);
+        return response()->json($opTech, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\OperationTechnician  $operationTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(OperationTechnician $operationTechnician)
+    public function update(Request $request, $id)
     {
-        //
+        $opTech = OperationTechnician::findOrFail($id);
+
+        $validated = $request->validate([
+            'employee_id' => 'sometimes|required|exists:employees,id',
+            'operation_experience' => 'nullable|string',
+        ]);
+
+        $opTech->update($validated);
+        return response()->json($opTech, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OperationTechnician  $operationTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, OperationTechnician $operationTechnician)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\OperationTechnician  $operationTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(OperationTechnician $operationTechnician)
-    {
-        //
+        OperationTechnician::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

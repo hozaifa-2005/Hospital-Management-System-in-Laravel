@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return response()->json(Department::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|unique:departments,name',
+            'description' => 'nullable|string',
+        ]);
+
+        $department = Department::create($validated);
+        return response()->json($department, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department $department)
+    public function show($id)
     {
-        //
+        $department = Department::findOrFail($id);
+        return response()->json($department, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Department $department)
+    public function update(Request $request, $id)
     {
-        //
+        $department = Department::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'sometimes|required|string|unique:departments,name,' . $id,
+            'description' => 'nullable|string',
+        ]);
+
+        $department->update($validated);
+        return response()->json($department, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Department $department)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Department $department)
-    {
-        //
+        Department::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

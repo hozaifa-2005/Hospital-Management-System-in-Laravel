@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeUserController;
 use App\Http\Controllers\LabRequestController;
 use App\Http\Controllers\LabResultController;
 use App\Http\Controllers\LabTechnicianController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\NurseController;
 use App\Http\Controllers\NursingLogController;
 use App\Http\Controllers\OperationTechnicianController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientUserController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\RadiologyRequestController;
 use App\Http\Controllers\RadiologyResultController;
@@ -216,4 +218,22 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('/employee/store', 'store');
     Route::put('/employee/update/{id}', 'update');
     Route::delete('/employee/delete/{id}', 'destroy');
+});
+
+// مستخدمي المرضى
+Route::controller(PatientUserController::class)->group(function () {
+    Route::get('/patient-users', 'index');
+    Route::get('/patient-user/{id}', 'show');
+    Route::post('/patient-user/store', 'store');
+    Route::put('/patient-user/update/{id}', 'update');
+    Route::delete('/patient-user/delete/{id}', 'destroy');
+});
+
+// مستخدمي الموظفين
+Route::controller(EmployeeUserController::class)->group(function () {
+    Route::get('/employee-users', 'index');
+    Route::get('/employee-user/{id}', 'show');
+    Route::post('/employee-user/store', 'store');
+    Route::put('/employee-user/update/{id}', 'update');
+    Route::delete('/employee-user/delete/{id}', 'destroy');
 });

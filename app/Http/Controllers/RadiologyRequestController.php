@@ -7,79 +7,46 @@ use Illuminate\Http\Request;
 
 class RadiologyRequestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+      public function index()
     {
-        //
+        return response()->json(RadiologyRequest::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'doctor_id' => 'required|exists:doctors,id',
+            'image_type' => 'required|string',
+        ]);
+
+        $requestRadiology = RadiologyRequest::create($validated);
+        return response()->json($requestRadiology, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\RadiologyRequest  $radiologyRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RadiologyRequest $radiologyRequest)
+    public function show($id)
     {
-        //
+        $requestRadiology = RadiologyRequest::findOrFail($id);
+        return response()->json($requestRadiology, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\RadiologyRequest  $radiologyRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RadiologyRequest $radiologyRequest)
+    public function update(Request $request, $id)
     {
-        //
+        $requestRadiology = RadiologyRequest::findOrFail($id);
+
+        $validated = $request->validate([
+            'patient_id' => 'sometimes|required|exists:patients,id',
+            'doctor_id' => 'sometimes|required|exists:doctors,id',
+            'image_type' => 'sometimes|required|string',
+        ]);
+
+        $requestRadiology->update($validated);
+        return response()->json($requestRadiology, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RadiologyRequest  $radiologyRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RadiologyRequest $radiologyRequest)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\RadiologyRequest  $radiologyRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RadiologyRequest $radiologyRequest)
-    {
-        //
+        RadiologyRequest::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

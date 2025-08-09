@@ -7,79 +7,54 @@ use Illuminate\Http\Request;
 
 class SurgeryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return response()->json(Surgery::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'doctor_id' => 'required|exists:doctors,id',
+            'operation_tech_id' => 'required|exists:operation_technicians,id',
+            'surgery_type' => 'required|string',
+            'start_time' => 'required|date',
+            'end_time' => 'nullable|date',
+            'notes' => 'nullable|string',
+        ]);
+
+        $surgery = Surgery::create($validated);
+        return response()->json($surgery, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Surgery  $surgery
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Surgery $surgery)
+    public function show($id)
     {
-        //
+        $surgery = Surgery::findOrFail($id);
+        return response()->json($surgery, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Surgery  $surgery
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Surgery $surgery)
+    public function update(Request $request, $id)
     {
-        //
+        $surgery = Surgery::findOrFail($id);
+
+        $validated = $request->validate([
+            'patient_id' => 'sometimes|required|exists:patients,id',
+            'doctor_id' => 'sometimes|required|exists:doctors,id',
+            'operation_tech_id' => 'sometimes|required|exists:operation_technicians,id',
+            'surgery_type' => 'sometimes|required|string',
+            'start_time' => 'sometimes|required|date',
+            'end_time' => 'nullable|date',
+            'notes' => 'nullable|string',
+        ]);
+
+        $surgery->update($validated);
+        return response()->json($surgery, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Surgery  $surgery
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Surgery $surgery)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Surgery  $surgery
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Surgery $surgery)
-    {
-        //
+        Surgery::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

@@ -7,79 +7,46 @@ use Illuminate\Http\Request;
 
 class ShiftController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+     public function index()
     {
-        //
+        return response()->json(Shift::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'start_time' => 'required|date_format:H:i:s',
+            'end_time' => 'required|date_format:H:i:s',
+        ]);
+
+        $shift = Shift::create($validated);
+        return response()->json($shift, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Shift  $shift
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Shift $shift)
+    public function show($id)
     {
-        //
+        $shift = Shift::findOrFail($id);
+        return response()->json($shift, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Shift  $shift
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Shift $shift)
+    public function update(Request $request, $id)
     {
-        //
+        $shift = Shift::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'sometimes|required|string',
+            'start_time' => 'sometimes|required|date_format:H:i:s',
+            'end_time' => 'sometimes|required|date_format:H:i:s',
+        ]);
+
+        $shift->update($validated);
+        return response()->json($shift, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shift  $shift
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Shift $shift)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Shift  $shift
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Shift $shift)
-    {
-        //
+        Shift::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class ReceptionistController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+     public function index()
     {
-        //
+        return response()->json(Receptionist::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'desk_number' => 'nullable|string',
+        ]);
+
+        $receptionist = Receptionist::create($validated);
+        return response()->json($receptionist, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Receptionist  $receptionist
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Receptionist $receptionist)
+    public function show($id)
     {
-        //
+        $receptionist = Receptionist::findOrFail($id);
+        return response()->json($receptionist, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Receptionist  $receptionist
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Receptionist $receptionist)
+    public function update(Request $request, $id)
     {
-        //
+        $receptionist = Receptionist::findOrFail($id);
+
+        $validated = $request->validate([
+            'employee_id' => 'sometimes|required|exists:employees,id',
+            'desk_number' => 'nullable|string',
+        ]);
+
+        $receptionist->update($validated);
+        return response()->json($receptionist, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Receptionist  $receptionist
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Receptionist $receptionist)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Receptionist  $receptionist
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Receptionist $receptionist)
-    {
-        //
+        Receptionist::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

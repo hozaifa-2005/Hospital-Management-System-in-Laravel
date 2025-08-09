@@ -7,79 +7,49 @@ use Illuminate\Http\Request;
 
 class NursingLogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return response()->json(NursingLog::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'nurse_id' => 'required|exists:nurses,id',
+            'datetime' => 'required|date',
+            'service_provided' => 'required|string',
+        ]);
+
+        $log = NursingLog::create($validated);
+        return response()->json($log, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NursingLog  $nursingLog
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NursingLog $nursingLog)
+    public function show($id)
     {
-        //
+        $log = NursingLog::findOrFail($id);
+        return response()->json($log, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NursingLog  $nursingLog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NursingLog $nursingLog)
+    public function update(Request $request, $id)
     {
-        //
+        $log = NursingLog::findOrFail($id);
+
+        $validated = $request->validate([
+            'patient_id' => 'sometimes|required|exists:patients,id',
+            'nurse_id' => 'sometimes|required|exists:nurses,id',
+            'datetime' => 'sometimes|required|date',
+            'service_provided' => 'sometimes|required|string',
+        ]);
+
+        $log->update($validated);
+        return response()->json($log, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NursingLog  $nursingLog
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NursingLog $nursingLog)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NursingLog  $nursingLog
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NursingLog $nursingLog)
-    {
-        //
+        NursingLog::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

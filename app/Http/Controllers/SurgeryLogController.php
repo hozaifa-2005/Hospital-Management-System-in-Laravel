@@ -7,79 +7,49 @@ use Illuminate\Http\Request;
 
 class SurgeryLogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return response()->json(SurgeryLog::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'surgery_id' => 'required|exists:surgeries,id',
+            'item_used' => 'required|string',
+            'quantity' => 'required|integer',
+            'remarks' => 'nullable|string',
+        ]);
+
+        $log = SurgeryLog::create($validated);
+        return response()->json($log, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SurgeryLog  $surgeryLog
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SurgeryLog $surgeryLog)
+    public function show($id)
     {
-        //
+        $log = SurgeryLog::findOrFail($id);
+        return response()->json($log, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SurgeryLog  $surgeryLog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SurgeryLog $surgeryLog)
+    public function update(Request $request, $id)
     {
-        //
+        $log = SurgeryLog::findOrFail($id);
+
+        $validated = $request->validate([
+            'surgery_id' => 'sometimes|required|exists:surgeries,id',
+            'item_used' => 'sometimes|required|string',
+            'quantity' => 'sometimes|required|integer',
+            'remarks' => 'nullable|string',
+        ]);
+
+        $log->update($validated);
+        return response()->json($log, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SurgeryLog  $surgeryLog
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SurgeryLog $surgeryLog)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\SurgeryLog  $surgeryLog
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SurgeryLog $surgeryLog)
-    {
-        //
+        SurgeryLog::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

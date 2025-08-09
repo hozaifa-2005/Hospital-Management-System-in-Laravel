@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class NurseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+       public function index()
     {
-        //
+        return response()->json(Nurse::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'assigned_ward' => 'nullable|string',
+        ]);
+
+        $nurse = Nurse::create($validated);
+        return response()->json($nurse, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Nurse  $nurse
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Nurse $nurse)
+    public function show($id)
     {
-        //
+        $nurse = Nurse::findOrFail($id);
+        return response()->json($nurse, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Nurse  $nurse
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Nurse $nurse)
+    public function update(Request $request, $id)
     {
-        //
+        $nurse = Nurse::findOrFail($id);
+
+        $validated = $request->validate([
+            'employee_id' => 'sometimes|required|exists:employees,id',
+            'assigned_ward' => 'nullable|string',
+        ]);
+
+        $nurse->update($validated);
+        return response()->json($nurse, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Nurse  $nurse
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Nurse $nurse)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Nurse  $nurse
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Nurse $nurse)
-    {
-        //
+        Nurse::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

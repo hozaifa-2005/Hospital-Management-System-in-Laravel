@@ -7,79 +7,44 @@ use Illuminate\Http\Request;
 
 class LabTechnicianController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+       public function index()
     {
-        //
+        return response()->json(LabTechnician::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'lab_section' => 'nullable|string',
+        ]);
+
+        $tech = LabTechnician::create($validated);
+        return response()->json($tech, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\LabTechnician  $labTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function show(LabTechnician $labTechnician)
+    public function show($id)
     {
-        //
+        $tech = LabTechnician::findOrFail($id);
+        return response()->json($tech, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\LabTechnician  $labTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LabTechnician $labTechnician)
+    public function update(Request $request, $id)
     {
-        //
+        $tech = LabTechnician::findOrFail($id);
+
+        $validated = $request->validate([
+            'employee_id' => 'sometimes|required|exists:employees,id',
+            'lab_section' => 'nullable|string',
+        ]);
+
+        $tech->update($validated);
+        return response()->json($tech, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LabTechnician  $labTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, LabTechnician $labTechnician)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\LabTechnician  $labTechnician
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LabTechnician $labTechnician)
-    {
-        //
+        LabTechnician::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

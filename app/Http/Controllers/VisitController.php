@@ -7,79 +7,49 @@ use Illuminate\Http\Request;
 
 class VisitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return response()->json(Visit::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'doctor_id' => 'required|exists:doctors,id',
+            'diagnosis' => 'required|string',
+            'notes' => 'nullable|string',
+        ]);
+
+        $visit = Visit::create($validated);
+        return response()->json($visit, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Visit $visit)
+    public function show($id)
     {
-        //
+        $visit = Visit::findOrFail($id);
+        return response()->json($visit, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Visit $visit)
+    public function update(Request $request, $id)
     {
-        //
+        $visit = Visit::findOrFail($id);
+
+        $validated = $request->validate([
+            'patient_id' => 'sometimes|required|exists:patients,id',
+            'doctor_id' => 'sometimes|required|exists:doctors,id',
+            'diagnosis' => 'sometimes|required|string',
+            'notes' => 'nullable|string',
+        ]);
+
+        $visit->update($validated);
+        return response()->json($visit, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Visit $visit)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Visit  $visit
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Visit $visit)
-    {
-        //
+        Visit::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

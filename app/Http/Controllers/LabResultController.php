@@ -7,79 +7,46 @@ use Illuminate\Http\Request;
 
 class LabResultController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+        public function index()
     {
-        //
+        return response()->json(LabResult::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'request_id' => 'required|exists:lab_requests,id',
+            'result_data' => 'required|string',
+            'technician_id' => 'required|exists:lab_technicians,id',
+        ]);
+
+        $labResult = LabResult::create($validated);
+        return response()->json($labResult, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\LabResult  $labResult
-     * @return \Illuminate\Http\Response
-     */
-    public function show(LabResult $labResult)
+    public function show($id)
     {
-        //
+        $labResult = LabResult::findOrFail($id);
+        return response()->json($labResult, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\LabResult  $labResult
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LabResult $labResult)
+    public function update(Request $request, $id)
     {
-        //
+        $labResult = LabResult::findOrFail($id);
+
+        $validated = $request->validate([
+            'request_id' => 'sometimes|required|exists:lab_requests,id',
+            'result_data' => 'sometimes|required|string',
+            'technician_id' => 'sometimes|required|exists:lab_technicians,id',
+        ]);
+
+        $labResult->update($validated);
+        return response()->json($labResult, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LabResult  $labResult
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, LabResult $labResult)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\LabResult  $labResult
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LabResult $labResult)
-    {
-        //
+        LabResult::findOrFail($id)->delete();
+        return response()->json(null, 204);
     }
 }

@@ -689,6 +689,1190 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "store_department",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/department/store?name=طب أسنان&description=قسم طب أسنان ومابعرف شو ",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"store"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "طب أسنان"
+								},
+								{
+									"key": "description",
+									"value": "قسم طب أسنان ومابعرف شو "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/departments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_department",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/department/delete/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"delete",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/department/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_department",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/department/update/10?name=الطب الرياضي",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"department",
+								"update",
+								"10"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "الطب الرياضي"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prescription",
+			"item": [
+				{
+					"name": "store_presciption",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/prescription/store?visit_id=2&medicine_name=sadsd&dosage=sdsadasd&duration=fgdsfdsfdsfsd&notes=ls'amdl;samdl;samf;dsfds ",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"prescription",
+								"store"
+							],
+							"query": [
+								{
+									"key": "visit_id",
+									"value": "2"
+								},
+								{
+									"key": "medicine_name",
+									"value": "sadsd"
+								},
+								{
+									"key": "dosage",
+									"value": "sdsadasd"
+								},
+								{
+									"key": "duration",
+									"value": "fgdsfdsfdsfsd"
+								},
+								{
+									"key": "notes",
+									"value": "ls'amdl;samdl;samf;dsfds "
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_Prescriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/prescriptions",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"prescriptions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_prescription",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/prescription/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"prescription",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_prescription",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/prescription/update/2?note=adasdsad",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"prescription",
+								"update",
+								"2"
+							],
+							"query": [
+								{
+									"key": "note",
+									"value": "adasdsad"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_prescription",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/prescription/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"prescription",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Visit",
+			"item": [
+				{
+					"name": "store_visit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/store?patient_id=3&doctor_id=2&diagnosis=أنت معك كذا كذا كذا&notes=ملاحظات هامة1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"store"
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "3"
+								},
+								{
+									"key": "doctor_id",
+									"value": "2"
+								},
+								{
+									"key": "diagnosis",
+									"value": "أنت معك كذا كذا كذا"
+								},
+								{
+									"key": "notes",
+									"value": "ملاحظات هامة1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_Visits",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visits",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_visit",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_visit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/update/2?notes=Prescribed medication",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"update",
+								"2"
+							],
+							"query": [
+								{
+									"key": "notes",
+									"value": "Prescribed medication"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_visit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shifts",
+			"item": [
+				{
+					"name": "store_shift",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/shift/store?name=سسس&start_time=08:00:00&end_time=08:00:01",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"shift",
+								"store"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "سسس"
+								},
+								{
+									"key": "start_time",
+									"value": "08:00:00"
+								},
+								{
+									"key": "end_time",
+									"value": "08:00:01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_Shifts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/shifts",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"shifts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_shift",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/shift/delete/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"shift",
+								"delete",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_shift",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/shift/update/1?name=الصباح",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"shift",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "الصباح"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_shift",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/shift/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"shift",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Surgery",
+			"item": [
+				{
+					"name": "store_surgery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/store?patient_id=3&doctor_id=2&diagnosis=أنت معك كذا كذا كذا&notes=ملاحظات هامة1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"store"
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "3"
+								},
+								{
+									"key": "doctor_id",
+									"value": "2"
+								},
+								{
+									"key": "diagnosis",
+									"value": "أنت معك كذا كذا كذا"
+								},
+								{
+									"key": "notes",
+									"value": "ملاحظات هامة1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_surgeries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgeries",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgeries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_surgery",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_surgery",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/visit/update/1?notes=Successful operation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"visit",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "notes",
+									"value": "Successful operation"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_surgery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SurgeryLog",
+			"item": [
+				{
+					"name": "store_surgery-log",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery-log/store?surgery_id=1&item_used=Scalpel&quantity=2&remarks=Sterilized",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery-log",
+								"store"
+							],
+							"query": [
+								{
+									"key": "surgery_id",
+									"value": "1"
+								},
+								{
+									"key": "item_used",
+									"value": "Scalpel"
+								},
+								{
+									"key": "quantity",
+									"value": "2"
+								},
+								{
+									"key": "remarks",
+									"value": "Sterilized"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_surgery-logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery-logs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_surgery-log",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery-log/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery-log",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_surgery-log",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery-log/update/1?quantity=4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery-log",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "quantity",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_surgery-log",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/surgery-log/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"surgery-log",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PatientUser",
+			"item": [
+				{
+					"name": "store_patient-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-user/store?patient_id=2&username=sameas&password=123123123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-user",
+								"store"
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "2"
+								},
+								{
+									"key": "username",
+									"value": "sameas"
+								},
+								{
+									"key": "password",
+									"value": "123123123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_PatientUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_patient-user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-user/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-user",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_patient-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-user/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_patient-user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-user/update/2?password=123123123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-user",
+								"update",
+								"2"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "123123123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EmployeeUser",
+			"item": [
+				{
+					"name": "store_patient-users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient-user/store?patient_id=5&username=same&password=123123213",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient-user",
+								"store"
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "5"
+								},
+								{
+									"key": "username",
+									"value": "same"
+								},
+								{
+									"key": "password",
+									"value": "123123213"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_EmployeeUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee-users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_employee-user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee-user/delete/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee-user",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_employee-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee-user/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee-user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_employee-user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee-user/update/5?password=123123123",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee-user",
+								"update",
+								"5"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "123123123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
