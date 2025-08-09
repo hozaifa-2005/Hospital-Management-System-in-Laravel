@@ -1,0 +1,694 @@
+{
+	"info": {
+		"_postman_id": "f705cccb-cefd-4cbb-b1de-17215ab7c8c9",
+		"name": "hospital",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34957549"
+	},
+	"item": [
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "store_patient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/store/?first_name=ssss&last_name=sssss&father_name=sssd&mother_name=asdasd&gender=ذكر&birth_date=1988-03-21&address=sdsd&phone_number=093300000&national_id_number=093300000",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"store",
+								""
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "ssss"
+								},
+								{
+									"key": "last_name",
+									"value": "sssss"
+								},
+								{
+									"key": "father_name",
+									"value": "sssd"
+								},
+								{
+									"key": "mother_name",
+									"value": "asdasd"
+								},
+								{
+									"key": "gender",
+									"value": "ذكر"
+								},
+								{
+									"key": "birth_date",
+									"value": "1988-03-21"
+								},
+								{
+									"key": "address",
+									"value": "sdsd"
+								},
+								{
+									"key": "phone_number",
+									"value": "093300000"
+								},
+								{
+									"key": "national_id_number",
+									"value": "093300000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_Patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_patient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/delete/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_patient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_patient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/patient/update/5?address=إدلب",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"patient",
+								"update",
+								"5"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "إدلب"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "store_appointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/appointment/store?patient_id=2&doctor_id=2&department_id=2&appointment_date=2026-08-10&appointment_time=09:30:02&status=مؤكد",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointment",
+								"store"
+							],
+							"query": [
+								{
+									"key": "patient_id",
+									"value": "2"
+								},
+								{
+									"key": "doctor_id",
+									"value": "2"
+								},
+								{
+									"key": "department_id",
+									"value": "2"
+								},
+								{
+									"key": "appointment_date",
+									"value": "2026-08-10"
+								},
+								{
+									"key": "appointment_time",
+									"value": "09:30:02"
+								},
+								{
+									"key": "status",
+									"value": "مؤكد"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_appointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/appointments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_appointment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/appointment/delete/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointment",
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_appointment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/appointment/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointment",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_appointment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/appointment/update/5?department_id=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"appointment",
+								"update",
+								"5"
+							],
+							"query": [
+								{
+									"key": "department_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "store_employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee/store?first_name=sad&last_name=sads&father_name=asd&mother_name=asdas&gender=ذكر&birth_date=1988-09-14&email=fahd.abdaksi@example.com&phone_number=093300003&job_title=فني عمليات&shift_id=3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"store"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "sad"
+								},
+								{
+									"key": "last_name",
+									"value": "sads"
+								},
+								{
+									"key": "father_name",
+									"value": "asd"
+								},
+								{
+									"key": "mother_name",
+									"value": "asdas"
+								},
+								{
+									"key": "gender",
+									"value": "ذكر"
+								},
+								{
+									"key": "birth_date",
+									"value": "1988-09-14"
+								},
+								{
+									"key": "email",
+									"value": "fahd.abdaksi@example.com"
+								},
+								{
+									"key": "phone_number",
+									"value": "093300003"
+								},
+								{
+									"key": "job_title",
+									"value": "فني عمليات"
+								},
+								{
+									"key": "shift_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employees",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee/delete/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"delete",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee/5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/employee/update/10?first_name=جود",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employee",
+								"update",
+								"10"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "جود"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctors",
+			"item": [
+				{
+					"name": "store_doctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/store?employee_id=2&department_id=3&specialization=أذن أنف حنجرة",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"store"
+							],
+							"query": [
+								{
+									"key": "employee_id",
+									"value": "2"
+								},
+								{
+									"key": "department_id",
+									"value": "3"
+								},
+								{
+									"key": "specialization",
+									"value": "أذن أنف حنجرة"
+								},
+								{
+									"key": "mother_name",
+									"value": "asdas",
+									"disabled": true
+								},
+								{
+									"key": "gender",
+									"value": "ذكر",
+									"disabled": true
+								},
+								{
+									"key": "birth_date",
+									"value": "1988-09-14",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "fahd.abdaksi@example.com",
+									"disabled": true
+								},
+								{
+									"key": "phone_number",
+									"value": "093300003",
+									"disabled": true
+								},
+								{
+									"key": "job_title",
+									"value": "فني عمليات",
+									"disabled": true
+								},
+								{
+									"key": "shift_id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll_doctors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctors",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/delete/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"delete",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show_doctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/12",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_doctor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/doctor/update/10?specialization=أذن أنف حنجرة",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"doctor",
+								"update",
+								"10"
+							],
+							"query": [
+								{
+									"key": "specialization",
+									"value": "أذن أنف حنجرة"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
