@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
+
+    
     public function index()
     {
         return response()->json(Department::all(), 200);

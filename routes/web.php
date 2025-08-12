@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,15 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/doctors', function () {
-    return view('doctors');
-});
-Route::get('/services', function () {
-    return view('departments');
-});
+Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/departments', [WelcomeController::class, 'allDepartments']);
+Route::get('/doctors', [DoctorController::class, 'allDoctors']);
+
+// Route::get('/departments', function () {
+//     return view('departments');
+// });
+// Route::get('/doctors', function () {
+//     return view('doctors');
+// });
 Route::get('/login', function () {
     return view('login');
 });

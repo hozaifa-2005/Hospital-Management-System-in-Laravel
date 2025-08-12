@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>مستشفى السلام - تسجيل الدخول</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -14,19 +14,25 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
+            height: 100%;
             font-family: 'Tajawal', sans-serif;
             background: linear-gradient(135deg, #f5f9ff 0%, #e6f0ff 100%);
             color: #333;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
         }
 
         .slide {
-            width: 1280px;
-            min-height: 720px;
+            width: 100vw;
+            height: 100vh;
             position: relative;
             overflow: hidden;
             background: linear-gradient(135deg, #f5f9ff 0%, #e6f0ff 100%);
@@ -36,11 +42,14 @@
 
         /* Header Styles */
         .header {
-            background-color: #fff;
+            background-color: #2c63acfa;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
             position: relative;
             z-index: 10;
+            width: 100vw;
+            /* جعل الهيدر يملأ عرض الشاشة بالكامل */
+            box-sizing: border-box;
         }
 
         .nav-container {
@@ -58,13 +67,13 @@
         }
 
         .logo i {
-            color: #1976d2;
+            color: #c5d2d2;
             font-size: 32px;
             margin-left: 10px;
         }
 
         .logo h1 {
-            color: #1976d2;
+            color: #dee9f3;
             font-size: 24px;
             font-weight: 700;
         }
@@ -76,18 +85,20 @@
 
         .nav-menu li {
             margin-left: 25px;
+            color: #c5d2d2;
+            font-size: large;
         }
 
         .nav-menu a {
             text-decoration: none;
-            color: #333;
+            color: #eae3e3;
             font-weight: 500;
             font-size: 18px;
             transition: color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #1976d2;
+            color: #3888e4;
         }
 
         /* Login Container */
@@ -97,6 +108,10 @@
             align-items: center;
             justify-content: center;
             padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .login-card {
@@ -365,6 +380,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="slide">
         <!-- Header -->
@@ -376,11 +392,10 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="/">الرئيسية</a></li>
-                    <li><a href="/services">الأقسام الطبية</a></li>
+                    <li><a href="/departments">الأقسام الطبية</a></li>
                     <li><a href="/doctors">الأطباء</a></li>
                     <li><a href="/login">تسجيل الدخول</a></li>
                 </ul>
-
             </div>
         </header>
 
@@ -398,7 +413,7 @@
                         <label for="username">اسم المستخدم</label>
                         <div class="input-group">
                             <i class="fas fa-user"></i>
-                            <input type="text" id="username" class="form-control" placeholder="أدخل اسم المستخدم">
+                            <input type="text" id="username" class="form-control" placeholder="أدخل اسم المستخدم" />
                         </div>
                     </div>
 
@@ -406,16 +421,8 @@
                         <label for="password">كلمة المرور</label>
                         <div class="input-group">
                             <i class="fas fa-lock"></i>
-                            <input type="password" id="password" class="form-control" placeholder="أدخل كلمة المرور">
+                            <input type="password" id="password" class="form-control" placeholder="أدخل كلمة المرور" />
                         </div>
-                    </div>
-
-                    <div class="form-options">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">تذكرني</label>
-                        </div>
-                        <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
                     </div>
 
                     <button type="submit" class="btn-login">تسجيل الدخول</button>
@@ -423,9 +430,11 @@
             </div>
 
             <div class="side-image">
-                <img src="C:\Users\Osama Alfares\Desktop\Al Salam Hospital\assets_task_01k25ynmcrez2sbn3wpgcfz4ty_1754694238_img_1.webp" alt="تسجيل الدخول" width="600px" height="600px">
+                <img src="images/login.png"
+                    alt="تسجيل الدخول" width="600" height="600" />
             </div>
         </div>
     </div>
 </body>
+
 </html>

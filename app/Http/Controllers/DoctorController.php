@@ -7,10 +7,32 @@ use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
- public function index()
+    public function allDoctors()
     {
-        return response()->json(Doctor::all(), 200);
+        $doctors = Doctor::with('employee')->get();
+        return view('doctors', compact('doctors'));
     }
+    public function doctorSearch(Request $request)
+    {
+        $query = Doctor::query();
+        if ($request->has('department') && !empty($request->department)) {
+            $query->whereHas('department', function ($q) use ($request) {
+                $q->where('name', $request->department);
+            });
+        }
+        $doctors = $query->get();
+        $department = $request->department; // نمرره للعرض
+
+        return view('doctors.index', compact('doctors', 'department'));
+    }
+
+
+
+    ///////////////////
+    //  public function index()
+    //     {
+    //         return response()->json(Doctor::all(), 200);
+    //     }
 
     public function store(Request $request)
     {

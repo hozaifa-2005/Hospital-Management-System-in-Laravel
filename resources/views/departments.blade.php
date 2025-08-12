@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,17 +26,19 @@
             padding: 0;
             box-sizing: border-box;
         }
-         /* Header Styles */
+
+        /* Header Styles */
         header {
             background-color: #005792;
             color: white;
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+
             top: 0;
             z-index: 1000;
         }
-         .header-container {
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,6 +76,7 @@
         nav ul li a.active {
             color: #64b5f6;
         }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -274,19 +278,20 @@
         }
     </style>
 </head>
+
 <body>
-   <header>
+    <header>
         <div class="container header-container">
             <div class="logo">
                 <i class="fas fa-hospital"></i>
                 <span>مستشفى السلام</span>
             </div>
             <nav>
-                <ul>
+                <ul class="nav-menu">
                     <li><a href="/">الرئيسية</a></li>
-                    <li><a href="/services">الأقسام الطبية</a></li>
-                    <li><a href="doctors">الأطباء</a></li>
-                    <li><a href="login">تسجيل الدخول</a></li>
+                    <li><a href="/departments">الأقسام الطبية</a></li>
+                    <li><a href="/doctors">الأطباء</a></li>
+                    <li><a href="/login">تسجيل الدخول</a></li>
                 </ul>
             </nav>
         </div>
@@ -297,56 +302,22 @@
                 <h2>الأقسام الطبية</h2>
                 <p>نقدم مجموعة واسعة من الخدمات الطبية المتخصصة باستخدام أحدث التقنيات وأفضل الممارسات الطبية</p>
             </div>
-
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
+                @foreach ($departments as $department)
+                    <div class="service-card">
+                        <div class="service-icon">
                         <i class="material-icons">local_hospital</i>
+                        </div>
+                        <h3 class="service-title">{{ $department->name }}</h3>
+                        <p class="service-description">{{ $department->description ?? '' }}</p>
                     </div>
-                    <h3 class="service-title">الطب العام</h3>
-                    <p class="service-description">استشارات طبية شاملة وتشخيص وعلاج الأمراض الشائعة والوقاية منها</p>
-                    <a href="#" class="service-link">المزيد <i class="material-icons">arrow_back</i></a>
-                </div>
-
-
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="material-icons">pregnant_woman</i>
-                    </div>
-                    <h3 class="service-title">النساء والتوليد</h3>
-                    <p class="service-description">رعاية شاملة للصحة النسائية والتوليد وأمراض النساء</p>
-                    <a href="#" class="service-link">المزيد <i class="material-icons">arrow_back</i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="material-icons">child_care</i>
-                    </div>
-                    <h3 class="service-title">طب الأطفال</h3>
-                    <p class="service-description">رعاية متخصصة للأطفال من الولادة حتى سن المراهقة</p>
-                    <a href="#" class="service-link">المزيد <i class="material-icons">arrow_back</i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="material-icons">favorite</i>
-                    </div>
-                    <h3 class="service-title">القلب والأوعية الدموية</h3>
-                    <p class="service-description">تشخيص وعلاج أمراض القلب والأوعية الدموية بأحدث التقنيات</p>
-                    <a href="#" class="service-link">المزيد <i class="material-icons">arrow_back</i></a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="material-icons">biotech</i>
-                    </div>
-                    <h3 class="service-title">المختبرات والأشعة</h3>
-                    <p class="service-description">خدمات مختبرية وأشعة تشخيصية دقيقة وسريعة</p>
-                    <a href="#" class="service-link">المزيد <i class="material-icons">arrow_back</i></a>
-                </div>
+                @endforeach
             </div>
+
+
+        </div>
         </div>
     </section>
 </body>
+
 </html>
